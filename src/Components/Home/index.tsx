@@ -1,13 +1,17 @@
-import {Link} from 'react-router'
+import PlaceCard from "./PlaceCard.tsx";
+import "../../App.css";
 
-export default function Home(){
+export default function Home() {
     return (
-        <div>
-            <Link to={`msk`}>Москва</Link>
-            <Link to={`spb`}>Санкт-Петербург</Link>
-            <Link to={`kzn`}>Казань</Link>
-            <Link to={`ekb`}>Екатеринбург</Link>
-            <Link to={`nnv`}>Нижний Новгород</Link>
+        <div className="flex flex-col items-center mt-10">
+            <h1 className="text-3xl font-bold text-gray-800 mb-8">Выберите город:</h1>
+            <div className={`flex flex-row gap-10`}>
+                <PlaceCard slug={`msk`} city={"Москва"} />
+                <PlaceCard slug={`spb`} city={"Санкт-Петербург"} />
+                <PlaceCard slug={`kzn`} city={"Казань"} />
+                <PlaceCard slug={`ekb`} city={"Екатеринбург"} />
+                <PlaceCard slug={`nnv`} city={"Нижний Новгород"} />
+            </div>
         </div>
     )
 }

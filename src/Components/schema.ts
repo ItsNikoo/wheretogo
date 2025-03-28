@@ -4,13 +4,23 @@ export const eventSchema = z.object({
     id: z.number(),
     title: z.string(),
     slug: z.string(),
+    location: z.string(),
+})
+
+export const placeSchema = z.object({
+    id: z.number(),
+    title: z.string(),
+    slug: z.string(),
     address: z.string(),
-    phone: z.string(),
     site_url: z.string().url(),
     subway: z.string(),
-    is_closed: z.boolean(),
-    location: z.string(),
-    has_parking_lot: z.boolean()
+    images: z.array(z.object({
+        image: z.string(),
+        source: z.object({
+            name: z.string(),
+            link: z.string(),
+        }),
+    }))
 })
 
 export const APISchema = z.object({
@@ -20,5 +30,6 @@ export const APISchema = z.object({
     results: z.array(eventSchema)
 })
 
-export type Place = z.infer<typeof eventSchema>;
+export type Places = z.infer<typeof eventSchema>;
 export type Api = z.infer<typeof APISchema>;
+export type SinglePlace = z.infer<typeof placeSchema>;

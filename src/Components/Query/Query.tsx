@@ -1,19 +1,13 @@
 import {useState, useEffect} from "react";
 import {Pagination} from "@mui/material";
-import {useEventsQuery} from "../Hooks/useEventsQuery.ts";
+import {usePlacesQuery} from "../../Hooks/usePlacesQuery.ts";
 import {Link, useParams} from "react-router";
+import "../../App.css";
 
 interface PlaceProps {
     id: number
     title: string
     slug: string
-    address: string
-    phone: string
-    site_url: string
-    subway: string
-    is_closed: boolean
-    location: string
-    has_parking_lot: boolean
 }
 
 interface QueryProps {
@@ -27,7 +21,7 @@ export default function Query({location}: QueryProps) {
 
     const {city} = useParams();
 
-    const {data, isLoading, error} = useEventsQuery({page, pageSize, location})
+    const {data, isLoading, error} = usePlacesQuery({page, pageSize, location})
 
     useEffect(() => {
         if (data) {
@@ -53,16 +47,16 @@ export default function Query({location}: QueryProps) {
     if (error) return <div>Error: {error.message}</div>;
 
     return (
-        <div>
+        <div className="flex flex-col items-center">
             <ul>
                 {data?.results.map((item: PlaceProps) => (
                     <li key={item.id}>
-                        <Link to={`/${city}/${item.slug}`}
+                        <Link to={`/${city}/${item.id}`}
                               state={{
                                   placeData: item,  // Передаем весь объект
                                   from: 'list-page' // Дополнительные мета-данные
                               }}>
-                            {item.title} {item.location} {item.subway}
+                            {item.title}
                         </Link>
                     </li>
                 ))}

@@ -22,14 +22,16 @@ async function fetchEvents(page: number, pageSize: number, location: string) {
         });
 
         const validData = APISchema.parse(response.data);
-        return validData;
+        if(validData){
+            return validData;
+        }
     } catch (error) {
         console.error('Error fetching events:', error);
         throw error;
     }
 }
 
-export function useEventsQuery({page, pageSize, location}: HookProps) {
+export function usePlacesQuery({page, pageSize, location}: HookProps) {
     const {data, isLoading, error} = useQuery({
         queryKey: ['results', page, pageSize, location],
         queryFn: () => fetchEvents(page, pageSize, location)
