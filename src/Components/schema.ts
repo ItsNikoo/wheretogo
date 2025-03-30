@@ -4,7 +4,7 @@ export const eventSchema = z.object({
     id: z.number(),
     title: z.string(),
     slug: z.string(),
-    location: z.string(),
+    location: z.string()
 })
 
 export const placeSchema = z.object({

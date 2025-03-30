@@ -8,14 +8,11 @@ interface Props {
 }
 
 export default function PlaceCard({slug, city}: Props) {
-    return(
-        <div className="p-5 bg-gray-300 rounded-lg flex items-center">
-            <Link
-                to={slug}>
-                <div className="text-center">
-                    <h2 className="text-xl font-semibold">{city}</h2>
-                </div>
+    return (
+        <li className="p-6 hover:bg-gray-50 transition-colors duration-200 text-center">
+            <Link to={slug}>
+                <h2 className="text-xl font-sans font-bold">{city}</h2>
             </Link>
-        </div>
+        </li>
     )
 };

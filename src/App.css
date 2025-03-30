@@ -1,1 +1,13 @@
 @import "tailwindcss";
+
+@tailwind utilities;
+
+@layer base {
+    html {
+        font-family: "Helvetica", sans-serif;
+    }
+    :root {
+        --color-primary: 59 130 246; /* Аналог blue-500 в RGB */
+        --color-secondary: 107 114 128; /* Аналог gray-500 */
+        }
+}

@@ -1,6 +1,6 @@
 import { useParams } from "react-router";
-import Query from "../Query/Query.tsx";
 import "../../App.css";
+import Query from "../Query";
 
 export default function City() {
     const { city } = useParams();
