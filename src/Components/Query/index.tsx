@@ -1,5 +1,5 @@
 import {useState, useEffect} from "react";
-import {Pagination} from "@mui/material";
+import {Pagination, List, ListItem} from "@mui/material";
 import {usePlacesQuery} from "../../Hooks/usePlacesQuery.ts";
 import {Link, useParams} from "react-router";
 import "../../App.css";
@@ -48,24 +48,18 @@ export default function Query({location}: QueryProps) {
     if (error) return <div>Error: {error.message}</div>;
 
     return (
-        <div className="min-h-screen bg-gray-100 flex flex-col items-center">
+        <div className="min-h-[300px] bg-gray-100 flex flex-col items-center">
             <div className="w-[800px]">
-                <ul className="bg-white rounded-lg shadow-md divide-y divide-gray-200 mb-6">
-                    {data?.results.map((item: PlaceProps) => (
-                        <li
-                            key={item.id}
-                            className="p-4 hover:bg-gray-50 transition-colors duration-200"
-                        >
-                            <Link
-                                to={`/${city}/${item.id}`}
-                                className="text-black font-medium text-lg"
-                            >
+                <List>
+                    {data?.results.map((item:PlaceProps) => (
+                        <ListItem className="text-md" key={item.id}>
+                            <Link to={`/${city}/${item.id}`}>
                                 {item.title}
                             </Link>
-                        </li>
+                        </ListItem>
                     ))}
-                </ul>
-                <div className="flex justify-center items-center gap-4">
+                </List>
+                <div className="flex justify-center items-center gap-4 mb-5">
                     <Pagination
                         count={totalPages}
                         color="primary"
