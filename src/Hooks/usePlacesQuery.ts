@@ -23,6 +23,7 @@ async function fetchEvents(page: number, pageSize: number, location: string) {
 
         const validData = APISchema.parse(response.data);
         if(validData){
+            console.log(validData);
             return validData;
         }
     } catch (error) {
