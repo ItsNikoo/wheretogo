@@ -1,7 +1,8 @@
 import {useState, useEffect} from "react";
-import {Pagination, List, ListItem} from "@mui/material";
+import {Pagination} from "@mui/material";
 import {usePlacesQuery} from "../../Hooks/usePlacesQuery.ts";
 import {Link, useParams} from "react-router";
+import {motion} from "framer-motion";
 import "../../App.css";
 
 interface PlaceProps {
@@ -49,16 +50,20 @@ export default function Query({location}: QueryProps) {
 
     return (
         <div className="min-h-[300px] bg-gray-100 flex flex-col items-center">
-            <div className="w-[800px]">
-                <List>
+            <div className="lg:w-[800px] md:w-5/6 sm:w-screen ">
+                <ul className="py-2">
                     {data?.results.map((item:PlaceProps) => (
-                        <ListItem className="text-md" key={item.id}>
+                        <motion.li
+                            whileHover={{scale:1.05, x: 12 }}
+                            exit={{opacity: 0}}
+                            transition={{duration: 0.5}}
+                            className="text-md px-5 my-3" key={item.id}>
                             <Link to={`/${city}/${item.id}`}>
                                 {item.title}
                             </Link>
-                        </ListItem>
+                        </motion.li>
                     ))}
-                </List>
+                </ul>
                 <div className="flex justify-center items-center gap-4 mb-5">
                     <Pagination
                         count={totalPages}
