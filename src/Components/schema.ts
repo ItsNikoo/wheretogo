@@ -1,35 +1,26 @@
-import {z} from "zod";
+import { z } from "zod";
 
-export const eventSchema = z.object({
-    id: z.number(),
-    title: z.string(),
-    slug: z.string(),
-    location: z.string()
-})
-
-export const placeSchema = z.object({
+// Схема для одного места (достопримечательности)
+const placeSchema = z.object({
     id: z.number(),
     title: z.string(),
     slug: z.string(),
     address: z.string(),
+    phone: z.string(),
     site_url: z.string().url(),
     subway: z.string(),
-    images: z.array(z.object({
-        image: z.string(),
-        source: z.object({
-            name: z.string(),
-            link: z.string(),
-        }),
-    }))
-})
+});
 
-export const APISchema = z.object({
-    count: z.number(),
-    next: z.string().url().nullable(),
-    previous: z.string().url().nullable(),
-    results: z.array(eventSchema)
-})
+// Схема для массива мест в одном городе
+const cityPlacesSchema = z.array(placeSchema);
 
-export type Places = z.infer<typeof eventSchema>;
-export type Api = z.infer<typeof APISchema>;
-export type SinglePlace = z.infer<typeof placeSchema>;
+// Схема для всех городов
+const citiesDataSchema = z.array(
+    z.record(z.string(), cityPlacesSchema) // { [cityName]: Place[] }
+);
+
+// Экспорт схемы
+export const citiesSchema = citiesDataSchema;
+
+// Тип TypeScript на основе схемы (опционально)
+export type CitiesData = z.infer<typeof citiesSchema>;

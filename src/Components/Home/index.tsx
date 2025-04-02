@@ -18,11 +18,13 @@ export default function Home() {
                 exit={{opacity: 0}}
                 transition={{duration: 0.5}}
                 className="bg-white rounded-lg shadow-md divide-y divide-gray-200 mb-6">
-                <PlaceCard slug={`msk`} city={"Москва"}/>
-                <PlaceCard slug={`spb`} city={"Санкт-Петербург"}/>
-                <PlaceCard slug={`kzn`} city={"Казань"}/>
-                <PlaceCard slug={`ekb`} city={"Екатеринбург"}/>
-                <PlaceCard slug={`nnv`} city={"Нижний Новгород"}/>
+                <PlaceCard slug={`moscow`} city={"Москва"}/>
+                <PlaceCard slug={`saintp`} city={"Санкт-Петербург"}/>
+                <PlaceCard slug={`newyork`} city={"Нью-Йорк"}/>
+                <PlaceCard slug={`paris`} city={"Париж"}/>
+                <PlaceCard slug={`london`} city={"Лондон"}/>
+                <PlaceCard slug={`shanghai`} city={"Шанхай"}/>
+                <PlaceCard slug={`tokyo`} city={"Токио"}/>
             </motion.ul>
         </div>
     )

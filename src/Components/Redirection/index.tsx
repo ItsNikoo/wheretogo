@@ -22,11 +22,13 @@ export default function Redirection() {
                     value={state}
                     onChange={handleChange}
                 >
-                    <MenuItem value={'msk'}>Москва</MenuItem>
-                    <MenuItem value={'spb'}>Санкт-Петербург</MenuItem>
-                    <MenuItem value={'kzn'}>Казань</MenuItem>
-                    <MenuItem value={'ekb'}>Екатеринбург</MenuItem>
-                    <MenuItem value={'nnv'}>Нижний Новгород</MenuItem>
+                    <MenuItem value={'moscow'}>Москва</MenuItem>
+                    <MenuItem value={'saintp'}>Санкт-Петербург</MenuItem>
+                    <MenuItem value={'newyork'}>Нью-Йорк</MenuItem>
+                    <MenuItem value={'paris'}>Париж</MenuItem>
+                    <MenuItem value={'london'}>Лондон</MenuItem>
+                    <MenuItem value={'shanghai'}>Шанхай</MenuItem>
+                    <MenuItem value={'tokyo'}>Токио</MenuItem>
                 </Select>
             </FormControl>
         </div>

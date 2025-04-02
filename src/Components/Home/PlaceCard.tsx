@@ -3,7 +3,7 @@ import "../../App.css";
 
 
 interface Props {
-    slug: "msk" | "spb" | "kzn" | "ekb" | "nnv";
+    slug: string;
     city: string;
 }
 
