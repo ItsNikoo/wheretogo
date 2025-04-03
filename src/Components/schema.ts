@@ -21,6 +21,7 @@ const citiesDataSchema = z.array(
 
 // Экспорт схемы
 export const citiesSchema = citiesDataSchema;
+export const singlePlaceSchema = placeSchema;
 
-// Тип TypeScript на основе схемы (опционально)
 export type CitiesData = z.infer<typeof citiesSchema>;
+export type Place = z.infer<typeof placeSchema>;

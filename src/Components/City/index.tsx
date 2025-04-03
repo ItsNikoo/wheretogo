@@ -69,7 +69,9 @@ export default function City() {
                                     whileHover={{scale: 1.02}}
                                     transition={{type: "spring", stiffness: 400, damping: 10}}
                                 >
-                                    <Link to={`/${city}/${place.slug}`}>
+                                    <Link to={`/${city}/${place.slug}`}
+                                          state={place}
+                                    >
                                         <h2 className="text-xl font-semibold">{place.title}</h2>
                                         <p className="text-gray-600">{place.address}</p>
                                     </Link>
